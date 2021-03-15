@@ -160,7 +160,7 @@ router.route('/movies')
                 } else {
                 res.status(404).json({success: false, message: "Movie not found"});
                 }
-            })
+            });
         }
     });
 
