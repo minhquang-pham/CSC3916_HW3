@@ -88,13 +88,13 @@ router.post('/signin', function (req, res) {
 router.route('/movies')
     .post(authJwtController.isAuthenticated, function (req, res) {
         console.log(req.body);
-        if (!req.body.title || !req.body.year_released || !req.body.genre || !req.body.actors || req.body.actors < 3) {
+        if (!req.body.title || !req.body.year || !req.body.genre || !req.body.actors || req.body.actors < 3) {
             res.json({success: false, message: "An entry requires a title, the year released, the genre, and 3 actors"});
         } else {
             var movie = new Movie();
 
             movie.title = req.body.title;
-            movie.year_released = req.body.year_released;
+            movie.year = req.body.year;
             movie.genre = req.body.genre;
             movie.actors = req.body.actors;
             res.json({success: true, msg: 'Movie saved.'});
