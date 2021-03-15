@@ -100,9 +100,9 @@ router.route('/movies')
             movie.save(function(err){
             if (err) {
                 return res.json(err);
-            }
+                }
             res.json({success: true, msg: 'Movie saved.'});
-
+            }
         }
     })
     .put(authJwtController.isAuthenticated, function(req, res) {
