@@ -151,18 +151,14 @@ router.route('/movies')
 
     })
     .get(authJwtController.isAuthenticated, function (req, res) {
-        if (!req.body){
-            res.json({success:false, message: "Please provide a title to update"});
-        }else{
-            Movie.find(req.body).select("title year genre actors").exec(function(err, movie) {
-                if (err) {
-                    res.status(403).json({success: false, message: "Error: Could not find movie"});
+        Movie.find({}, function(err, movie) {
+            if (err) {
+                res.status(403).json({success: false, message: "Error: Could not find movies"});
                 }
-                if (movie) {
-                    res.status(200).json({success: true, message: "Movie found", Movie: movie})
+            if (movie) {
+                res.status(200).json({success: true, message: "Movie found", Movie: movie})
                 } else {
-                    res.status(404).json({success: false, message: "Movie not found"});
-
+                res.status(404).json({success: false, message: "Movie not found"});
                 }
             })
         }
