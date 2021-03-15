@@ -102,7 +102,7 @@ router.route('/movies')
                 return res.json(err);
                 }
             res.json({success: true, msg: 'Movie saved.'});
-            }
+            })
         }
     })
     .put(authJwtController.isAuthenticated, function(req, res) {
