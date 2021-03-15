@@ -97,6 +97,10 @@ router.route('/movies')
             movie.year = req.body.year;
             movie.genre = req.body.genre;
             movie.actors = req.body.actors;
+            movie.saver.save(function(err){
+            if (err) {
+                return res.json(err);
+            }
             res.json({success: true, msg: 'Movie saved.'});
 
         }
