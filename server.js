@@ -156,7 +156,7 @@ router.route('/movies')
                 res.status(403).json({success: false, message: "Error: Could not find movies"});
                 }
             if (movie) {
-                res.status(200).json({success: true, message: "Movie found", Movie: movie})
+                res.json({Movie: movies});
                 } else {
                 res.status(404).json({success: false, message: "Movie not found"});
                 }
